@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thirupathi Sowmya | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  min-height:100vh;
+  background: linear-gradient(135deg,#1f1c2c,#928dab,#1f1c2c);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow-x:hidden;
+}
+
+/* Decorative background bubbles */
+body::before, body::after{
+  content:'';
+  position:absolute;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:0.2;
+}
+body::before{
+  width:500px;
+  height:500px;
+  background:#ff7b72;
+  top:-100px;
+  left:-150px;
+}
+body::after{
+  width:400px;
+  height:400px;
+  background:#ffce54;
+  bottom:-80px;
+  right:-100px;
+}
+
+/* Container */
+.portfolio-container{
+  display:flex;
+  width:90%;
+  max-width:1200px;
+  min-height:80vh;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(25px);
+  border-radius:25px;
+  overflow:hidden;
+  color:white;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  position:relative;
+  z-index:1;
+}
+
+/* Left Panel */
+.left{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+  border-right:1px solid rgba(255,255,255,0.2);
+  position:relative;
+}
+
+/* Profile Picture */
+.profile-wrapper{
+  position:relative;
+  width:160px;
+  height:160px;
+  margin-bottom:20px;
+}
+.profile-img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #ffce54;
+  z-index:2;
+  position:relative;
+  box-shadow:0 0 25px rgba(255,206,84,0.6);
+}
+
+/* Glowing rings behind profile picture */
+.highlight-ring{
+  position:absolute;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  border:2px solid rgba(255,206,84,0.3);
+  top:-20px;
+  left:-20px;
+  z-index:1;
+  animation:rotate 6s linear infinite;
+}
+@keyframes rotate{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
+/* Name & Title */
+.left h1{
+  font-size:2.2rem;
+  font-weight:700;
+  color:#ffce54;
+  margin-bottom:5px;
+}
+.left p{
+  font-size:1rem;
+  margin-bottom:20px;
+  color:#fff;
+}
+
+/* Contact Info */
+.contact-info{
+  font-size:0.95rem;
+  line-height:1.7;
+}
+.contact-info a{
+  color:#ffce54;
+  text-decoration:none;
+  transition:0.3s;
+}
+.contact-info a:hover{color:#fff;}
+
+/* Right Panel - Grid with timeline connector */
+.right{
+  flex:2;
+  padding:40px 30px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-gap:30px;
+  position:relative;
+}
+
+/* Timeline Connector */
+.right::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:0;
+  width:4px;
+  height:100%;
+  background:rgba(255,255,255,0.15);
+  transform:translateX(-50%);
+  border-radius:2px;
+  z-index:0;
+}
+
+/* Section Cards */
+.section{
+  background: rgba(255,255,255,0.1);
+  backdrop-filter:blur(15px);
+  padding:25px 20px;
+  border-radius:20px;
+  transition:all 0.4s ease;
+  position:relative;
+  z-index:1;
+}
+.section:hover{
+  background: rgba(255,255,255,0.2);
+  transform:translateY(-5px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+.section::before{
+  content:'';
+  position:absolute;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  background:#ffce54;
+  left:-7.5px;
+  top:20px;
+}
+.section h2{
+  color:#ffce54;
+  font-size:1.4rem;
+  border-left:5px solid #ff7b72;
+  padding-left:12px;
+  margin-bottom:12px;
+  position:relative;
+}
+
+/* Skills */
+.skills-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:5px;
+}
+.skill{
+  color:white;
+  border-radius:25px;
+  padding:8px 16px;
+  font-weight:600;
+  font-size:0.85rem;
+  transition:all 0.3s;
+  background: linear-gradient(135deg,#ff7b72,#ffce54);
+}
+.skill.html{background:linear-gradient(135deg,#e44d26,#f06529);}
+.skill.css{background:linear-gradient(135deg,#264de4,#2965f1);}
+.skill.javascript{background:linear-gradient(135deg,#f0db4f,#e5c100);color:#333;}
+.skill.java{background:linear-gradient(135deg,#f89820,#ec6c0b);}
+.skill.python{background:linear-gradient(135deg,#306998,#4b8bbe);}
+.skill.c{background:linear-gradient(135deg,#00599C,#0072B2);}
+.skill.sql{background:linear-gradient(135deg,#f29111,#e67e22);}
+.skill:hover{filter:brightness(1.2);transform:scale(1.1);}
+
+/* Resume Button */
+.resume-btn{
+  display:inline-block;
+  margin-top:15px;
+  background:#ffce54;
+  color:#333;
+  padding:12px 30px;
+  border-radius:30px;
+  font-weight:600;
+  text-decoration:none;
+  font-size:1rem;
+  transition:all 0.3s ease;
+  box-shadow:0 0 15px rgba(255,255,255,0.3);
+}
+.resume-btn:hover{
+  background:#ffd93b;
+  transform:scale(1.1);
+  box-shadow:0 0 25px rgba(255,255,255,0.6);
+}
+
+/* Footer */
+footer{
+  grid-column:1/3;
+  text-align:center;
+  font-size:0.85rem;
+  color:#eee;
+  margin-top:10px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .portfolio-container{
+    flex-direction:column;
+  }
+  .left,.right{
+    width:100%;
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+  }
+  .right{
+    display:flex;
+    flex-direction:column;
+    padding:30px 20px;
+  }
+  footer{grid-column:1;}
+}
+</style>
+</head>
+<body>
+
+<div class="portfolio-container">
+
+  <!-- Left Panel -->
+  <div class="left">
+    <div class="profile-wrapper">
+      <img src="pic.JPG" alt="Thirupathi Sowmya" class="profile-img">
+      <span class="highlight-ring"></span>
+    </div>
+    <h1>Thirupathi Sowmya</h1>
+    <p>Computer Science Engineering Student</p>
+
+    <div class="contact-info">
+      <p>📧 <a href="mailto:sowmyathirupathi@gmail.com">sowmyathirupathi@gmail.com</a></p>
+      <p>📞 <a href="tel:+919876543210">+91 98765 43210</a></p>
+      <p>🔗 <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></p>
+      <p>💻 <a href="https://github.com/yourgithub" target="_blank">GitHub</a></p>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right">
+
+    <!-- Education -->
+    <div class="section education">
+      <h2>Education</h2>
+      <p><strong>10th:</strong> Narayana - 99%</p>
+      <p><strong>Inter:</strong> Narayana - 958 Marks</p>
+      <p><strong>B.Tech:</strong> Computer Science Engineering - 8.0 CGPA</p>
+    </div>
+
+    <!-- Skills -->
+    <div class="section skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <div class="skill html">HTML</div>
+        <div class="skill css">CSS</div>
+        <div class="skill javascript">JavaScript</div>
+        <div class="skill java">Java</div>
+        <div class="skill python">Python</div>
+        <div class="skill c">C Programming</div>
+        <div class="skill sql">SQL</div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section projects">
+      <h2>Projects & Certifications</h2>
+      <p><strong>Community Service Project:</strong> Conducted a village survey to assess health conditions and provide improvement suggestions.</p>
+      <ul>
+        <li>Introduction to Soft Computing (NPTEL)</li>
+        <li>Joy of Computing Using Python (NPTEL)</li>
+      </ul>
+    </div>
+
+    <!-- Resume -->
+    <div class="section resume">
+      <h2>Resume</h2>
+      <p>Click below to download my resume for full academic and project details.</p>
+      <a href="re.pdf" class="resume-btn" download>📄 Download Resume</a>
+    </div>
+
+    <footer>&copy;
